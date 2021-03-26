@@ -1,0 +1,56 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Movie List";
+}
+
+@model IEnumerable<Moody413Assignment3.Models.FormResponse>
+
+
+<!--this is a page of the movies submitted-->
+
+
+<div>
+    <h2>Here is a list of the movies submitted!</h2>
+    <br />
+    <table>
+        <thead>
+            <tr><th>Category</th><th>Title</th><th>Year</th><th>Director</th><th>Rating</th><th>Edited</th><th>Lent To</th><th>Notes</th></tr>
+        </thead>
+
+        <tbody>
+            @foreach (Moody413Assignment3.Models.FormResponse x in Model)
+            {
+            <tr>
+                <td>@x.Category</td>
+                <td>@x.Title</td>
+                <td>@x.Year</td>
+                <td>@x.Director</td>
+                <td>@x.Rating</td>
+                <td>@x.Edited</td>
+                <td>@x.LentTo</td>
+                <td>@x.Notes</td>
+                <td><form asp-action="EditMovie" method="post">
+                    <input type="hidden" name="editstuff" value="@x.MovieID" />
+                    <input type="hidden" name="category" value="@x.Category" />
+                    <input type="hidden" name="title" value="@x.Title" />
+                    <input type="hidden" name="year" value="@x.Year" />
+                    <input type="hidden" name="director" value="@x.Director" />
+                    <input type="hidden" name="rating" value="@x.Rating" />
+                    <input type="hidden" name="edited" value="@x.Edited" />
+                    <input type="hidden" name="lentto" value="@x.LentTo" />
+                    <input type="hidden" name="notes" value="@x.Notes" />
+                    <button type="submit">Edit</button>
+                </form></td>
+                <td>
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" name="deletestuff" value="@x.MovieID" />
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

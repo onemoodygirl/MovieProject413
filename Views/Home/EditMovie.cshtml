@@ -1,0 +1,81 @@
+﻿@{
+    ViewData["Title"] = "Movies";
+}
+
+@*@model Moody413Assignment3.Models.ViewModels.EditMovieViewModel*@
+<!--this is a page to add movies-->
+@model Moody413Assignment3.Models.FormResponse
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Edit this movie!</p>
+
+<!--use tag helpers to help connect-->
+<form asp-action="UpdateMovie" method="post">
+    <div>
+        <label asp-for="MovieID">MovieID:</label>
+        <input name="editstuff " value="@Model.MovieID" asp-for="MovieID" />
+    </div>
+
+    <div>
+        <label asp-for="Category">Category:</label>
+        <input value="@Model.Category" asp-for="Category" />
+    </div>
+
+    <div>
+        <label asp-for="Title">Title:</label>
+        <input value="@Model.Title" asp-for="Title" />
+    </div>
+
+    <div>
+        <label asp-for="Year">Year:</label>
+        <input value="@Model.Year" asp-for="Year" />
+    </div>
+
+    <div>
+        <label asp-for="Director">Director:</label>
+        <input value="@Model.Director" asp-for="Director" />
+    </div>
+
+    <div>
+        <label asp-for="Rating">Rating:</label>
+        <select asp-for="Rating">
+            <option value="">Select One</option>
+            <option value="G">G</option>
+            <option value="PG">PG</option>
+            <option value="PG-13">PG-13</option>
+            <option value="R">R</option>
+        </select>
+    </div>
+
+    <div>
+        <label asp-for="Edited">Edited?</label>
+        <select asp-for="Edited">
+            <option value="">Select One</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+    </div>
+
+    <div>
+        <label asp-for="LentTo">Lent To:</label>
+        <input value="@Model.LentTo" asp-for="LentTo" />
+    </div>
+
+    <div>
+        <label asp-for="Notes">Notes</label>
+        <input value="@Model.Notes" asp-for="Notes" />
+    </div>
+
+    <div>
+        <div asp-validation-summary="All"></div>
+        <form asp-action="UpdateMovie" method="post">
+            <input type="hidden" name="editstuff" value="@Model.MovieID" />
+            <button type="submit">Update</button>
+        </form>
+    </div>
+
+    <!--<button type="submit">Submit Movie</button>
+    <div asp-validation-summary="All"></div>
+    -->
+</form>

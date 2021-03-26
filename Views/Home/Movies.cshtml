@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "Movies";
+}
+
+@model Moody413Assignment3.Models.FormResponse
+
+<!--this is a page to add movies-->
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Add a Movie!</p>
+
+<!--use tag helpers to help connect-->
+<form asp-action="Movies" method="post">
+    <div>
+        <label asp-for="Category">Category:</label>
+        <input asp-for="Category" />
+    </div>
+
+    <div>
+        <label asp-for="Title">Title:</label>
+        <input asp-for="Title" />
+    </div>
+
+    <div>
+        <label asp-for="Year">Year:</label>
+        <input asp-for="Year" />
+    </div>
+
+    <div>
+        <label asp-for="Director">Director:</label>
+        <input asp-for="Director" />
+    </div>
+
+    <div>
+        <label asp-for="Rating">Rating:</label>
+        <select asp-for="Rating">
+            <option value="">Select One</option>
+            <option value="G">G</option>
+            <option value="PG">PG</option>
+            <option value="PG-13">PG-13</option>
+            <option value="R">R</option>
+        </select>
+    </div>
+
+    <div>
+        <label asp-for="Edited">Edited?</label>
+        <select asp-for="Edited">
+            <option value="">Select One</option>s
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+    </div>
+
+    <div>
+        <label asp-for="LentTo">Lent To:</label>
+        <input asp-for="LentTo" />
+    </div>
+
+    <div>
+        <label asp-for="Notes">Notes</label>
+        <input asp-for="Notes" />
+    </div>
+
+    <button type="submit">Submit Movie</button>
+    <div asp-validation-summary="All"></div>
+</form>
